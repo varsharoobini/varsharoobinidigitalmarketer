@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Varsha Roobini K — Digital Marketing Executive</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=Work+Sans:wght@300;400;500;600&family=Caveat:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0c1024;
+    --dusk:#171d3d;
+    --dusk-2:#212a52;
+    --gold:#f2b84c;
+    --coral:#ff8a68;
+    --sage:#8fbfa0;
+    --mist:#efeade;
+    --mist-dim:#c9c5ba;
+    --glass:rgba(255,255,255,0.06);
+    --glass-border:rgba(255,255,255,0.14);
+    --shadow: 0 20px 60px rgba(0,0,0,0.45);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--ink);
+    color:var(--mist);
+    font-family:'Work Sans', sans-serif;
+    font-weight:400;
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.display{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    letter-spacing:-0.01em;
+    margin:0;
+  }
+  .hand{
+    font-family:'Caveat', cursive;
+    color:var(--gold);
+  }
+  a{color:inherit;}
+  ::selection{background:var(--gold); color:var(--ink);}
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none !important; transition:none !important;}
+  }
+
+  /* ---------- Layout shells ---------- */
+  .wrap{max-width:1120px; margin:0 auto; padding:0 32px;}
+  section{position:relative; padding:120px 0;}
+  .eyebrow{
+    font-size:13px; letter-spacing:0.22em; text-transform:uppercase;
+    color:var(--gold); font-weight:500; margin-bottom:14px; display:block;
+  }
+
+  /* ---------- Glow blobs ---------- */
+  .blob{
+    position:absolute; border-radius:50%; filter:blur(90px);
+    opacity:0.55; pointer-events:none; z-index:0;
+  }
+  .blob-gold{background:radial-gradient(circle, var(--gold), transparent 70%); width:520px; height:520px;}
+  .blob-coral{background:radial-gradient(circle, var(--coral), transparent 70%); width:420px; height:420px;}
+  .blob-sage{background:radial-gradient(circle, var(--sage), transparent 70%); width:380px; height:380px;}
+
+  @keyframes drift{
+    0%,100%{transform:translate(0,0);}
+    50%{transform:translate(24px,-30px);}
+  }
+
+  /* ---------- Glass components ---------- */
+  .glass{
+    background:var(--glass);
+    border:1px solid var(--glass-border);
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+    border-radius:20px;
+  }
+  .glass-btn{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:13px 26px; border-radius:100px;
+    background:var(--glass); border:1px solid var(--glass-border);
+    backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);
+    color:var(--mist); text-decoration:none; font-size:14px; font-weight:500;
+    transition:transform 0.35s ease, background 0.35s ease, box-shadow 0.35s ease;
+  }
+  .glass-btn:hover{transform:translateY(-3px); background:rgba(255,255,255,0.12); box-shadow:0 12px 30px rgba(242,184,76,0.18);}
+  .glass-btn.solid{background:linear-gradient(135deg, var(--gold), var(--coral)); color:var(--ink); border:none; font-weight:600;}
+
+  /* ---------- Reveal on scroll ---------- */
+  .reveal{opacity:0; transform:translateY(28px); transition:opacity 0.9s ease, transform 0.9s ease;}
+  .reveal.in{opacity:1; transform:translateY(0);}
+
+  /* ================= NAV ================= */
+  nav{
+    position:fixed; top:0; left:0; right:0; z-index:50;
+    display:flex; justify-content:space-between; align-items:center;
+    padding:20px 32px; backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px);
+    background:rgba(12,16,36,0.55); border-bottom:1px solid rgba(255,255,255,0.06);
+  }
+  .brandmark{font-family:'Fraunces',serif; font-size:19px; font-weight:600;}
+  .brandmark span{color:var(--gold);}
+  nav .links{display:flex; gap:28px; font-size:14px;}
+  nav .links a{text-decoration:none; color:var(--mist-dim); transition:color 0.3s;}
+  nav .links a:hover{color:var(--gold);}
+  @media (max-width:720px){ nav .links{display:none;} }
+
+  /* ================= HERO ================= */
+  .hero{
+    min-height:100vh; display:flex; align-items:center;
+    padding-top:100px;
+  }
+  .hero-grid{
+    display:grid; grid-template-columns:1.1fr 0.9fr; gap:60px; align-items:center;
+    position:relative; z-index:2;
+  }
+  @media (max-width:860px){ .hero-grid{grid-template-columns:1fr;} }
+  .hero h1{font-size:clamp(38px,6vw,64px); line-height:1.05;}
+  .hero .role-line{
+    font-size:18px; color:var(--mist-dim); margin-top:18px; max-width:480px;
+  }
+  .hero .cta-row{display:flex; gap:14px; margin-top:36px; flex-wrap:wrap;}
+
+  .id-card{
+    padding:34px; text-align:left; position:relative;
+    animation:float 6s ease-in-out infinite;
+  }
+  @keyframes float{
+    0%,100%{transform:translateY(0px) rotate(-0.4deg);}
+    50%{transform:translateY(-14px) rotate(0.4deg);}
+  }
+  .id-card .initials{
+    width:64px; height:64px; border-radius:18px;
+    background:linear-gradient(135deg, var(--gold), var(--coral));
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Fraunces',serif; font-weight:700; font-size:24px; color:var(--ink);
+    margin-bottom:18px;
+  }
+  .id-card .tag{
+    display:inline-block; font-size:12px; padding:4px 12px; border-radius:100px;
+    background:rgba(143,191,160,0.16); color:var(--sage); margin:4px 6px 0 0; border:1px solid rgba(143,191,160,0.3);
+  }
+  .id-card .meta-row{display:flex; align-items:center; gap:10px; font-size:13.5px; color:var(--mist-dim); margin-top:8px;}
+
+  /* ================= SUMMARY / ABOUT ================= */
+  .about-grid{
+    display:grid; grid-template-columns:1fr 1fr; gap:70px; align-items:center; position:relative; z-index:2;
+  }
+  @media (max-width:860px){ .about-grid{grid-template-columns:1fr;} }
+  .compass{width:100%; max-width:380px;}
+
+  /* ================= EXPERIENCE ================= */
+  .exp-card{
+    padding:30px 32px; margin-bottom:26px; position:relative; overflow:hidden;
+    transition:transform 0.4s ease, box-shadow 0.4s ease;
+  }
+  .exp-card:hover{transform:translateY(-6px); box-shadow:var(--shadow);}
+  .exp-card::before{
+    content:""; position:absolute; inset:0; opacity:0; transition:opacity 0.4s ease;
+    background:radial-gradient(500px circle at var(--mx,50%) var(--my,50%), rgba(242,184,76,0.12), transparent 60%);
+  }
+  .exp-card:hover::before{opacity:1;}
+  .exp-head{display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap; gap:8px; margin-bottom:6px;}
+  .exp-role{font-family:'Fraunces',serif; font-size:20px; font-weight:600;}
+  .exp-time{font-size:13px; color:var(--gold); font-family:'Caveat',cursive; font-size:19px;}
+  .exp-org{color:var(--mist-dim); font-size:14px; margin-bottom:14px;}
+  .exp-card ul{margin:0; padding-left:18px; font-size:14.5px; color:var(--mist-dim);}
+  .exp-card ul li{margin-bottom:7px;}
+  .exp-card ul li::marker{color:var(--coral);}
+
+  .freelance-card{
+    padding:30px; border-radius:20px; position:relative; overflow:hidden;
+    background:linear-gradient(160deg, rgba(143,191,160,0.14), rgba(23,29,61,0.4));
+    border:1px solid rgba(143,191,160,0.25);
+  }
+  .freelance-card .stat{
+    font-family:'Fraunces',serif; font-size:34px; color:var(--sage); font-weight:700;
+  }
+
+  /* ================= EDUCATION — EIFFEL TOWER ================= */
+  .tower-wrap{
+    display:flex; justify-content:center; position:relative; z-index:2;
+  }
+  .tower-svg{width:100%; max-width:560px; height:auto;}
+  .floor-label{
+    font-family:'Caveat', cursive; font-size:22px; fill:var(--gold);
+  }
+  .floor-sub{
+    font-family:'Work Sans', sans-serif; font-size:11px; fill:var(--mist-dim);
+    letter-spacing:0.04em;
+  }
+  .beacon{
+    animation:pulse 2.4s ease-in-out infinite;
+    transform-origin:center;
+  }
+  @keyframes pulse{
+    0%,100%{ opacity:0.65; r:6; }
+    50%{ opacity:1; r:9; }
+  }
+  .tower-caption{text-align:center; max-width:460px; margin:26px auto 0; color:var(--mist-dim); font-size:14.5px;}
+
+  /* ================= SKILLS ================= */
+  .skill-grid{display:flex; flex-wrap:wrap; gap:12px; position:relative; z-index:2;}
+  .skill-pill{
+    padding:10px 18px; border-radius:100px; font-size:14px;
+    background:var(--glass); border:1px solid var(--glass-border);
+    transition:transform 0.3s ease, border-color 0.3s ease;
+  }
+  .skill-pill:hover{transform:translateY(-4px) scale(1.03); border-color:var(--gold);}
+
+  /* ================= ACHIEVEMENTS — TRAVEL POSTER ================= */
+  .poster-row{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:26px; position:relative; z-index:2;
+  }
+  @media (max-width:860px){ .poster-row{grid-template-columns:1fr;} }
+  .poster{
+    border-radius:16px; padding:28px 22px; min-height:230px;
+    display:flex; flex-direction:column; justify-content:space-between;
+    border:1px solid var(--glass-border);
+    position:relative; transition:transform 0.4s ease;
+  }
+  .poster:nth-child(1){ background:linear-gradient(165deg,#2a2450,#171d3d); transform:rotate(-2deg); }
+  .poster:nth-child(2){ background:linear-gradient(165deg,#3a2340,#171d3d); transform:rotate(1.5deg); }
+  .poster:nth-child(3){ background:linear-gradient(165deg,#243a3a,#171d3d); transform:rotate(-1deg); }
+  .poster:hover{transform:rotate(0deg) translateY(-8px);}
+  .poster .num{font-family:'Fraunces',serif; font-size:15px; color:var(--gold);}
+  .poster h3{font-size:19px; margin-top:14px; line-height:1.25;}
+  .poster p{font-size:13px; color:var(--mist-dim); margin-top:10px;}
+
+  /* ================= TOOLKIT / INTERESTS ================= */
+  .masonry{
+    column-count:3; column-gap:18px; position:relative; z-index:2;
+  }
+  @media (max-width:860px){ .masonry{column-count:2;} }
+  @media (max-width:560px){ .masonry{column-count:1;} }
+  .tool-tile{
+    break-inside:avoid; margin-bottom:18px; padding:22px 18px; text-align:center;
+    border-radius:18px; transition:transform 0.35s ease;
+  }
+  .tool-tile:nth-child(odd){ background:var(--glass); border:1px solid var(--glass-border); }
+  .tool-tile:nth-child(even){ background:linear-gradient(160deg, rgba(255,138,104,0.12), rgba(23,29,61,0.5)); border:1px solid rgba(255,138,104,0.2); }
+  .tool-tile:hover{transform:translateY(-6px);}
+  .tool-tile .glyph{font-family:'Fraunces',serif; font-size:26px; color:var(--gold); margin-bottom:8px;}
+  .tool-tile .name{font-size:13.5px; color:var(--mist-dim);}
+
+  /* ================= FOOTER / CONTACT ================= */
+  footer{
+    padding:100px 0 60px; text-align:center; position:relative; z-index:2;
+  }
+  footer h2{font-size:clamp(28px,4vw,44px); margin-bottom:18px;}
+  footer .contact-row{display:flex; justify-content:center; gap:14px; flex-wrap:wrap; margin-top:30px;}
+  footer .fine{margin-top:60px; font-size:12.5px; color:var(--mist-dim); opacity:0.7;}
+
+  .section-title{font-size:clamp(26px,3.4vw,38px); margin-bottom:44px; max-width:640px;}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="brandmark">Varsha<span>.</span>R</div>
+  <div class="links">
+    <a href="#about">About</a>
+    <a href="#experience">Experience</a>
+    <a href="#education">Education</a>
+    <a href="#skills">Skills</a>
+    <a href="#achievements">Achievements</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="blob blob-gold" style="top:-80px; left:-120px; animation:drift 10s ease-in-out infinite;"></div>
+  <div class="blob blob-coral" style="bottom:-100px; right:-100px; animation:drift 12s ease-in-out infinite reverse;"></div>
+  <div class="wrap hero-grid">
+    <div class="reveal in">
+      <span class="eyebrow">Digital Marketing Executive · Chennai, India</span>
+      <h1>Turning search intent<br>into <span class="hand" style="font-size:1.05em;">real growth.</span></h1>
+      <p class="role-line">SEO · Content Marketing · Lead Generation — I build the unglamorous, compounding groundwork that makes a brand findable, and then keep tuning it until the numbers move.</p>
+      <div class="cta-row">
+        <a class="glass-btn solid" href="#experience">See the work →</a>
+        <a class="glass-btn" href="https://varsharoobini.site" target="_blank" rel="noopener">Visit portfolio site</a>
+        <a class="glass-btn" href="#contact">Get in touch</a>
+      </div>
+    </div>
+    <div class="id-card glass reveal in" style="transition-delay:0.15s;">
+      <div class="initials">VR</div>
+      <h3 style="font-size:22px;">Varsha Roobini K</h3>
+      <div class="meta-row">📍 Chennai, Tamil Nadu</div>
+      <div class="meta-row">✉️ varsharoobini05@gmail.com</div>
+      <div class="meta-row">📞 +91 95660 19335</div>
+      <div style="margin-top:16px;">
+        <span class="tag">On-Page SEO</span>
+        <span class="tag">GA4</span>
+        <span class="tag">SEMrush</span>
+        <span class="tag">WordPress</span>
+        <span class="tag">Canva</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap about-grid">
+    <div class="reveal">
+      <span class="eyebrow">Professional Summary</span>
+      <h2 class="section-title">A results-driven marketer with an analyst's patience.</h2>
+      <p style="color:var(--mist-dim); font-size:15.5px; max-width:480px;">
+        Results-driven Digital Marketing Executive with hands-on experience across SEO, content marketing, social media, lead generation, and website optimization — On-Page, Off-Page, Technical and Local SEO, keyword research, competitor analysis, link building, and full SEO audits.
+      </p>
+      <p style="color:var(--mist-dim); font-size:15.5px; max-width:480px; margin-top:16px;">
+        Comfortable across WordPress, GA4, Search Console, SEMrush, Ahrefs, Canva, and Meta Business Suite, with a strong analytical mindset for turning performance data into content that actually ranks — and stays ranked as the algorithm shifts.
+      </p>
+    </div>
+    <div class="reveal" style="transition-delay:0.1s;">
+      <svg class="compass" viewBox="0 0 380 380" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="190" cy="190" r="150" stroke="var(--glass-border)" stroke-width="1"/>
+        <circle cx="190" cy="190" r="110" stroke="rgba(242,184,76,0.35)" stroke-width="1" stroke-dasharray="4 6"/>
+        <circle cx="190" cy="190" r="70" stroke="rgba(255,138,104,0.3)" stroke-width="1"/>
+        <line x1="190" y1="40" x2="190" y2="340" stroke="rgba(255,255,255,0.08)"/>
+        <line x1="40" y1="190" x2="340" y2="190" stroke="rgba(255,255,255,0.08)"/>
+        <path d="M190 90 L205 190 L190 290 L175 190 Z" fill="url(#needle)"/>
+        <defs>
+          <linearGradient id="needle" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="var(--gold)"/>
+            <stop offset="100%" stop-color="var(--coral)"/>
+          </linearGradient>
+        </defs>
+        <circle cx="190" cy="190" r="9" fill="var(--mist)"/>
+        <text x="190" y="30" text-anchor="middle" class="floor-label" fill="var(--gold)" font-size="15">Reach</text>
+        <text x="190" y="360" text-anchor="middle" class="floor-label" fill="var(--sage)" font-size="15">Rank</text>
+        <text x="30" y="195" text-anchor="middle" class="floor-label" fill="var(--coral)" font-size="15">Content</text>
+        <text x="350" y="195" text-anchor="middle" class="floor-label" fill="var(--mist-dim)" font-size="15" fill-opacity="0.8">Data</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="wrap">
+    <span class="eyebrow reveal">Professional Experience</span>
+    <h2 class="section-title reveal">Where the strategy met the storefront.</h2>
+
+    <div class="exp-card glass reveal" onmousemove="spot(event,this)">
+      <div class="exp-head">
+        <span class="exp-role">Digital Marketing Intern</span>
+        <span class="exp-time">Jun 2026 – Present</span>
+      </div>
+      <div class="exp-org">Courseinn Academy, Chennai</div>
+      <ul>
+        <li>Built and launched Varsharoobini.site from scratch on WordPress, then optimized it end-to-end for On-Page, Off-Page and Technical SEO.</li>
+        <li>Ran keyword research, keyword mapping, competitor analysis and full SEO audits with industry-standard tools.</li>
+        <li>Tuned meta titles, meta descriptions, alt tags, schema basics and internal linking for search visibility.</li>
+        <li>Published SEO-optimized blog content targeting high-intent digital marketing keywords.</li>
+        <li>Grew backlinks through guest posting, profile creation, directories and social bookmarking.</li>
+        <li>Tracked performance in GA4 and Search Console to spot the next optimization opportunity.</li>
+        <li>Planned content calendars and social content, designed Canva creatives for Fituplex Gym's brand, and edited short-form Reels in CapCut for DAF Academy and other clients.</li>
+      </ul>
+    </div>
+
+    <div class="freelance-card reveal" style="margin-bottom:26px;" onmousemove="spot(event,this)">
+      <div class="exp-head">
+        <span class="exp-role">Freelance — V.S.K Garden</span>
+        <span class="exp-time">Meta Ads · Brand Awareness</span>
+      </div>
+      <p style="color:var(--mist-dim); font-size:14.5px; max-width:600px;">Planned and ran a Meta Ads brand-awareness campaign end to end — creatives, copy, and audience targeting built to maximize top-of-funnel reach on Facebook.</p>
+      <div style="margin-top:18px; display:flex; align-items:baseline; gap:10px;">
+        <span class="stat">40,000+</span>
+        <span style="color:var(--mist-dim); font-size:13.5px;">reach & impressions delivered</span>
+      </div>
+    </div>
+
+    <div class="exp-card glass reveal" onmousemove="spot(event,this)">
+      <div class="exp-head">
+        <span class="exp-role">Senior Sales Officer</span>
+        <span class="exp-time">Mar 2026 – May 2026</span>
+      </div>
+      <div class="exp-org">HDB Financial Services</div>
+      <ul>
+        <li>Prospected and nurtured leads for financial products, consistently meeting monthly targets.</li>
+        <li>Built lasting client relationships through consultative selling and responsive follow-up.</li>
+        <li>Guided customers through loan and financial service applications, improving conversion efficiency.</li>
+      </ul>
+    </div>
+
+    <div class="exp-card glass reveal" onmousemove="spot(event,this)">
+      <div class="exp-head">
+        <span class="exp-role">Patient Counsellor</span>
+        <span class="exp-time">Feb 2025 – Mar 2026</span>
+      </div>
+      <div class="exp-org">ACS Medical College & Hospital, Chennai</div>
+      <ul>
+        <li>Served as primary liaison between patients and clinical teams, ensuring clear communication of treatment plans.</li>
+        <li>Maintained accurate patient records and resolved service concerns, lifting satisfaction scores.</li>
+        <li>Built empathy, stakeholder management and cross-functional collaboration skills that carried straight into client-facing marketing work.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION — EIFFEL TOWER -->
+<section id="education">
+  <div class="blob blob-sage" style="top:10%; left:-140px; opacity:0.3;"></div>
+  <div class="wrap">
+    <span class="eyebrow reveal">Education</span>
+    <h2 class="section-title reveal">Every floor built on the one before it.</h2>
+    <div class="tower-wrap reveal">
+      <svg class="tower-svg" viewBox="0 0 400 640" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="steel" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#f2b84c"/>
+            <stop offset="100%" stop-color="#7d6a3d"/>
+          </linearGradient>
+        </defs>
+        <!-- base -->
+        <path d="M40 600 L360 600 L300 470 L100 470 Z" fill="none" stroke="url(#steel)" stroke-width="2"/>
+        <path d="M40 600 L200 300 L360 600" fill="none" stroke="url(#steel)" stroke-width="2"/>
+        <path d="M100 470 L200 300 L300 470" fill="none" stroke="url(#steel)" stroke-width="1.5"/>
+        <line x1="70" y1="535" x2="330" y2="535" stroke="url(#steel)" stroke-width="1.5"/>
+        <!-- floor 1 platform (B.Sc) -->
+        <rect x="90" y="460" width="220" height="14" fill="rgba(242,184,76,0.14)" stroke="var(--gold)" stroke-width="1"/>
+        <text x="200" y="450" text-anchor="middle" class="floor-label">Ground Floor · 2015–2019</text>
+        <text x="200" y="500" text-anchor="middle" class="floor-sub">B.Sc, Medical Imaging Technology — SRM Institute of Science &amp; Technology · 73.31%</text>
+
+        <!-- mid section -->
+        <path d="M155 300 L245 300 L200 150 Z" fill="none" stroke="url(#steel)" stroke-width="2"/>
+        <line x1="170" y1="230" x2="230" y2="230" stroke="url(#steel)" stroke-width="1.5"/>
+        <!-- floor 2 platform (MBA) -->
+        <rect x="160" y="222" width="80" height="12" fill="rgba(255,138,104,0.16)" stroke="var(--coral)" stroke-width="1"/>
+        <text x="200" y="205" text-anchor="middle" class="floor-label">Second Floor · 2021–2023</text>
+        <text x="200" y="252" text-anchor="middle" class="floor-sub">MBA, Finance — SRM Directorate of Distance Education · Grade A</text>
+
+        <!-- spire + beacon (2026 cert) -->
+        <line x1="200" y1="150" x2="200" y2="70" stroke="url(#steel)" stroke-width="2"/>
+        <circle class="beacon" cx="200" cy="66" r="7" fill="var(--gold)"/>
+        <text x="200" y="42" text-anchor="middle" class="floor-label">The Beacon · 2026</text>
+        <text x="200" y="20" text-anchor="middle" class="floor-sub">Digital Marketing Certification — Courseinn Academy</text>
+      </svg>
+    </div>
+    <p class="tower-caption reveal">Medical imaging taught precision. Finance taught structure. Digital marketing is where both meet the open feed of the internet — and the view keeps getting better the higher this goes.</p>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="wrap">
+    <span class="eyebrow reveal">Core Skills &amp; Certifications</span>
+    <h2 class="section-title reveal">The toolkit, in plain terms.</h2>
+    <div class="skill-grid reveal">
+      <span class="skill-pill">Search Engine Optimization (SEO)</span>
+      <span class="skill-pill">Google Analytics &amp; Keyword Research</span>
+      <span class="skill-pill">Search Engine Marketing (SEM)</span>
+      <span class="skill-pill">Email Marketing &amp; Lead Generation</span>
+      <span class="skill-pill">Social Media Marketing</span>
+      <span class="skill-pill">Competitor &amp; Campaign Analysis</span>
+      <span class="skill-pill">Content Marketing &amp; Copywriting</span>
+      <span class="skill-pill">MS Office &amp; CRM Tools</span>
+    </div>
+    <div style="margin-top:34px;" class="reveal">
+      <p style="color:var(--mist-dim); font-size:14.5px;">Digital Marketing Certification — Courseinn Academy (2026) · MS Office Suite &amp; Diploma in Computer Applications (DCA)</p>
+    </div>
+  </div>
+</section>
+
+<!-- ACHIEVEMENTS — TRAVEL POSTER -->
+<section id="achievements">
+  <div class="wrap">
+    <span class="eyebrow reveal">Achievements</span>
+    <h2 class="section-title reveal">A few stops worth marking on the map.</h2>
+    <div class="poster-row">
+      <div class="poster reveal">
+        <span class="num">01</span>
+        <h3>Best Outgoing Student</h3>
+        <p>B.Sc Medical Imaging Technology, 2015–2019</p>
+      </div>
+      <div class="poster reveal" style="transition-delay:0.1s;">
+        <span class="num">02</span>
+        <h3>1st Prize — International Day of Radiology Quiz</h3>
+        <p>Competed and placed first, 2017</p>
+      </div>
+      <div class="poster reveal" style="transition-delay:0.2s;">
+        <span class="num">03</span>
+        <h3>Research Paper Presenter</h3>
+        <p>Presented at national radiology conferences</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TOOLKIT -->
+<section id="toolkit">
+  <div class="wrap">
+    <span class="eyebrow reveal">Everyday Tools</span>
+    <h2 class="section-title reveal">What's actually open in the browser tabs.</h2>
+    <div class="masonry">
+      <div class="tool-tile reveal"><div class="glyph">GA4</div><div class="name">Google Analytics 4</div></div>
+      <div class="tool-tile reveal"><div class="glyph">GSC</div><div class="name">Google Search Console</div></div>
+      <div class="tool-tile reveal"><div class="glyph">SEM</div><div class="name">SEMrush</div></div>
+      <div class="tool-tile reveal"><div class="glyph">Ahr</div><div class="name">Ahrefs</div></div>
+      <div class="tool-tile reveal"><div class="glyph">Cnv</div><div class="name">Canva</div></div>
+      <div class="tool-tile reveal"><div class="glyph">Meta</div><div class="name">Meta Business Suite</div></div>
+      <div class="tool-tile reveal"><div class="glyph">WP</div><div class="name">WordPress</div></div>
+      <div class="tool-tile reveal"><div class="glyph">CC</div><div class="name">CapCut</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<footer id="contact">
+  <div class="blob blob-gold" style="bottom:-60px; left:50%; transform:translateX(-50%); opacity:0.3;"></div>
+  <div class="wrap reveal">
+    <span class="eyebrow">Let's talk</span>
+    <h2>Have a site that needs to rank?</h2>
+    <p style="color:var(--mist-dim); max-width:440px; margin:0 auto;">Open to digital marketing roles and SEO projects — happy to walk through an audit of your current site.</p>
+    <div class="contact-row">
+      <a class="glass-btn solid" href="mailto:varsharoobini05@gmail.com">✉ Email me</a>
+      <a class="glass-btn" href="tel:+919566019335">📞 +91 95660 19335</a>
+      <a class="glass-btn" href="https://linkedin.com/in/varsharoobini" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="glass-btn" href="https://varsharoobini.site" target="_blank" rel="noopener">Portfolio site</a>
+    </div>
+    <div class="fine">Varsha Roobini K · Chennai, Tamil Nadu</div>
+  </div>
+</footer>
+
+<script>
+  // Scroll reveal
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); } });
+  }, {threshold:0.15});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  // Card spotlight follow
+  function spot(e, el){
+    const r = el.getBoundingClientRect();
+    el.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+    el.style.setProperty('--my', (e.clientY - r.top) + 'px');
+  }
+</script>
+</body>
+</html>
